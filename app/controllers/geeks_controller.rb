@@ -1,0 +1,2 @@
+class GeeksController < ApplicationController
+end
