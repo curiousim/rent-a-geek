@@ -1,7 +1,7 @@
 class GeekPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all.order(created_at: :desc)
+      scope.all
     end
   end
 

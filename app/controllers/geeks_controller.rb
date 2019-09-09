@@ -1,10 +1,18 @@
 class GeeksController < ApplicationController
-
   before_action :find_geek, only: [:show]
 
   def index
-    @geeks = policy_scope(Geek)
-
+    if params[:search].present?
+      sql_query = " \
+        geeks.name @@ :query \
+        OR geeks.description @@ :query \
+        OR geeks.location @@ :query \
+        OR geeks.category @@ :query \
+      "
+      @geeks = policy_scope(Geek).where(sql_query, query: "%#{params[:search]}%")
+    else
+      @geeks = policy_scope(Geek)
+    end
   end
 
   def new
