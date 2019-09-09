@@ -4,6 +4,7 @@ class GeeksController < ApplicationController
 
   def index
     @geeks = policy_scope(Geek)
+
   end
 
   def new
@@ -34,7 +35,8 @@ class GeeksController < ApplicationController
   end
 
   def show
-    authorize @geek
+    @booking = Booking.new
+    authorize @booking
   end
 
   private
