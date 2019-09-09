@@ -14,3 +14,6 @@
 # user = User.create(email: 'fictive1@gmial.com', first_name: 'Vasya', last_name: 'Pupkin', password: '12345')
 # user.remote_avatar_url = url
 # user.save!
+
+User.create(email: 'fictive1@gmial.com', first_name: 'Vasya', last_name: 'Pupkin', password: '12345')
+Geek.create(active: true, name: 'Pupkin Vasilius', description: "Good at drinking beer, can code, can't not code.", location: 'Tel Aviv', price: 12, trusted: true, user_id: 1, category: "Beer Drinker")
