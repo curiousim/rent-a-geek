@@ -1,7 +1,21 @@
 class GeeksController < ApplicationController
   before_action :find_geek, only: [:show]
+
   def index
     @geeks = Geek.all
+  end
+
+  def new
+    @geek = Geek.new
+  end
+
+  def create
+    @geek = Geek.new(geek_params)
+    if @geeek.save
+      redirect_to geek_path(@geek)
+    else
+      render :new
+    end
   end
 
   def show
@@ -10,8 +24,9 @@ class GeeksController < ApplicationController
   private
 
   def geek_params
-    params.require(:geek).permit(:name, :photo)
-  end  
+    params.require(:geek).permit(:category, :name, :photo, :description, :location, :price, :active, :trusted)
+#    params.require(:geek).permit(:name, :photo)
+  end
 
   def find_geek
     @geek = Geek.find(params[:id])
