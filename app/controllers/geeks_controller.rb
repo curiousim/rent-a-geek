@@ -35,7 +35,8 @@ class GeeksController < ApplicationController
   end
 
   def show
-    authorize @geek
+    @booking = Booking.new
+    authorize @booking
   end
 
   private
