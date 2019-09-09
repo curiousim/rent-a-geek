@@ -1,35 +1,41 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-# IgorZ version
+require 'faker'
 
 puts "Cleaning geeks.."
 Geek.delete_all
 puts "Cleaning users.."
 User.delete_all
 
-puts "Add some users.."
+##########################################################
+#### FIRST TWO USERS TO GET ALL THE GEEKS ################
+####       SO WE CAN LOGIN AFTER          ################
+##########################################################
 
 users = [
   {email: 'vpupkin@gmail.com', first_name: 'Vasya', last_name: 'Pupkin', password: '123456'},
   {email: 'jlennon@gmail.com', first_name: 'John', last_name: 'Lennon', password: '123456'}]
 
-# url = "https://res.cloudinary.com/dfqbormfp/image/upload/v1567853147/wa9vlnulrm72empij7o3.jpg"
-# user = User.create(email: 'fictive1@gmial.com', first_name: 'Vasya', last_name: 'Pupkin', password: '12345')
-# user.remote_photo_url = url
-
 User.create!(users)
 
-puts "Add some geeks.."
+##########################################################
+####        HOW MANY TIMES TO SEED        ################
+####       and  FAKER MODELS TO SEED      ################
+##########################################################
 
-geeks = [
-  { category: 'Compute', name: 'Vasya the Beast', description: 'Lorem ipsum dolor sit amet', location: 'Tel Aviv', price: 300, active: true, trusted: true, user: User.first},
-  { category: 'Chemistry', name: 'John the Fox', description: 'Lorem ipsum dolor sit amet', location: 'London', price: 500, active: true, trusted: true, user: User.second},
-  { active: true, name: 'Moshe Ben Yosef', description: "Ahi, naase leha buba!", location: 'Bat Yam', price: 15, trusted: true, user: User.second, category: "Instalyator" }
-]
-Geek.create!(geeks)
+puts "Adding users..."
+10.times do
+  email = Faker::Internet.unique.email
+  first_name = Faker::Name.unique.first_name
+  last_name = Faker::Name.unique.last_name
+
+  User.create!(email: email, first_name: first_name, last_name: last_name, password: '123456')
+end
+
+puts "Adding geeks.."
+10.times do
+  name = Faker::FunnyName.name
+  description = Faker::Movies::HitchhikersGuideToTheGalaxy.quote
+  location = Faker::Address.full_address
+  price= Faker::Number.between(from: 5, to: 1000) 
+
+  Geek.create!(active: true, name: name, description: description, location: location, price: price, trusted: true, user: User.second, category: "Geek")
+end
