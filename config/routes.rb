@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   #resources :users, only: [:create] DEVISE SHOULD DO IT FOR US
   resources :bookings, only: [:show]
-  resources :geeks, only: do
+  resources :geeks do
     resources :bookings, only: [:create]
   end
 end
