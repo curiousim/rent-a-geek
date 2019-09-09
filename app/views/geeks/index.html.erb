@@ -1,0 +1,27 @@
+<div class="container-fluid">   
+  <div class="row"> 
+
+    <div class="row col-9">     
+      <% @geeks.each do |geek| %>
+      <div class="col">
+        <div class="card-trip">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" style="width: 300px"/>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= geek.name %></h2>
+              <p><%= geek.description %></p>
+            </div>
+            <h2 class="card-trip-pricing"><%= geek.price %></h2>
+          </div>
+        </div>
+      </div>
+      <% end %>
+  </div>
+    <div class="col-3">
+      <div
+  id="map"
+  style="height: 90vh;"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>
+    </div>
+</div>   
