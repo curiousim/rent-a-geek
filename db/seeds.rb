@@ -34,8 +34,3 @@ geeks = [
   { active: true, name: 'Moshe Ben Yosef', description: "Ahi, naase leha buba!", location: 'Bat Yam', price: 15, trusted: true, user: User.second, category: "Instalyator" }
 ]
 Geek.create!(geeks)
-
-
-
-
-
