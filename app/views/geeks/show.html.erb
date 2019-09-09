@@ -1,0 +1,29 @@
+<div class="container-fluid">   
+  <div class="row"> 
+
+  <div class="row col-9 justify-content-center">     
+      <div id="geek_image">
+        <img src="\" alt="ADD IMAGE TAG WITH GEEKS IMAGE" class="col-12">
+        <h3 class=""> <%= @geek.name %> </h3>
+      </div>
+      <div id="geek_info" class="row">
+        <div class=col-9>Category</div>
+        <div class=col-3><%= @geek.category %></div>
+        <div class=col-12><h4>Description</h4></div>
+        <div class=col-12><p> <%= @geek.description %> </p></div>
+        <div class=col-9>Rating</div>
+        <div class=col-3>TO DO</div>
+      </div>
+  </div>
+
+  <div class="col-3">
+     <div
+  id="map"
+  style="height: 80vh;"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>
+  <button type="button" class="btn btn-danger btn-block">Book now</button>
+  </div>
+
+  </div>
+</div>  

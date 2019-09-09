@@ -25,7 +25,6 @@ class GeeksController < ApplicationController
 
   def geek_params
     params.require(:geek).permit(:category, :name, :photo, :description, :location, :price, :active, :trusted)
-#    params.require(:geek).permit(:name, :photo)
   end
 
   def find_geek
