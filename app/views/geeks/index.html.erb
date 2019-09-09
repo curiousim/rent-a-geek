@@ -5,13 +5,11 @@
       <% @geeks.each do |geek| %>
       <div class="col">
         <div class="card-trip">
-
         <% if geek.photo.url %>
           <%= cl_image_tag geek.photo, height: 300, crop: :fill %>
         <% else %>
           <%= image_tag 'https://www.anitian.com/wp-content/uploads/2016/11/silicon-valley-gilfoyle.jpg', class: "thumb-index"%>
         <% end %>
-
           <div class="card-trip-infos">
             <div>
               <h2> <%= link_to geek.name, geek_path(geek) %> </h2>
