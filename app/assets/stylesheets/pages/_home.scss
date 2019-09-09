@@ -1,9 +1,40 @@
 // Specific CSS for your home-page
+.container {
+  padding-top: 100px;
+}
 .search-form {
   background-color: white;
-  padding: 45px;
+  padding: 65px;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+}
+
+.main {
+  // font-family: 'Modak', cursive;
+  font-family: 'Roboto Condensed', sans-serif;
+  // font-family: 'Akzidenz Grotesk Black';
+  // src: local('Akzidenz Grotesk Black'), url('Akzidenz-grotesk-black.woff') format('woff');
 }
 
 body {
-  background: #83C2D6;
+  background: #4DAECD;
 }
+
+.slogan {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  // font-family: 'Akzidenz Grotesk Black';
+
+}
+
+// .color {
+//   background: #E03E47;
+// }
+
+// @font-face {
+// font-family: 'Akzidenz Grotesk Black';
+// font-style: normal;
+// font-weight: normal;
+// src: local('Akzidenz Grotesk Black'), url('Akzidenz-grotesk-black.woff') format('woff');
+// }
