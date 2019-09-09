@@ -1,16 +1,10 @@
 class GeeksController < ApplicationController
   before_action :find_geek, only: [:show]
   def index
-    Geek.all
+    @geeks = Geek.all
   end
 
   def show
-  end
-
-  def create
-  end
-
-  def new
   end
 
   private

@@ -1,0 +1,23 @@
+<div class="container-fluid">   
+  <div class="row"> 
+
+    <div class="row col-9">     
+      <% @geeks.each do |geek| %>
+      <div class="col">
+        <div class="card-trip">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" style="width: 200px"/>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= geek.name %></h2>
+              <p><%= geek.description %></p>
+            </div>
+            <h2 class="card-trip-pricing"><%= geek.price %></h2>
+          </div>
+        </div>
+      </div>
+      <% end %>
+  </div>
+    <div class="col-3">
+     <h1>Here will be the god'amn map!</h1>
+    </div>
+</div>   
