@@ -1,5 +1,5 @@
 // Specific CSS for your home-page
-.container {
+.padding-home {
   padding-top: 100px;
 }
 .search-form {
@@ -11,6 +11,8 @@
 }
 
 .main {
+  text-align: center;
+  margin-bottom: 22px;
   // font-family: 'Modak', cursive;
   font-family: 'Roboto Condensed', sans-serif;
   // font-family: 'Akzidenz Grotesk Black';
@@ -28,13 +30,3 @@ body {
 
 }
 
-// .color {
-//   background: #E03E47;
-// }
-
-// @font-face {
-// font-family: 'Akzidenz Grotesk Black';
-// font-style: normal;
-// font-weight: normal;
-// src: local('Akzidenz Grotesk Black'), url('Akzidenz-grotesk-black.woff') format('woff');
-// }

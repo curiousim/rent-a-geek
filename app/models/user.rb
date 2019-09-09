@@ -9,9 +9,5 @@ class User < ApplicationRecord
   has_many :geeks
   has_many :reviews, dependent: :destroy
   has_many :bookings, dependent: :destroy
-
-  HOURS = %w(one two three four)
-  validates :name, presence: true
-  validates :species, inclusion: { in: HOURS }
 end
 
