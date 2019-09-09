@@ -4,6 +4,7 @@ class GeeksController < ApplicationController
 
   def index
     @geeks = policy_scope(Geek)
+
   end
 
   def new
