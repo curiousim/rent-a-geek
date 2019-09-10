@@ -1,7 +1,9 @@
 class GeeksController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :find_geek, only: [:show]
 
   def index
+
     if params[:search].present?
       sql_query = " \
         geeks.name @@ :query \
@@ -9,9 +11,16 @@ class GeeksController < ApplicationController
         OR geeks.location @@ :query \
         OR geeks.category @@ :query \
       "
-      @geeks = policy_scope(Geek).where(sql_query, query: "%#{params[:search]}%")
+      @geeks = policy_scope(Geek).where(sql_query, query: "%#{params[:search]}%").where.not(longitude: nil, latitude: nil)
     else
-      @geeks = policy_scope(Geek)
+      @geeks = policy_scope(Geek).where.not(longitude: nil, latitude: nil)
+    end
+
+    @markers = @geeks.map do |geek|
+      {
+        lat: geek.latitude,
+        lng: geek.longitude
+      }
     end
   end
 

@@ -1,7 +1,7 @@
-<div class="container-fluid">   
-  <div class="row p-3"> 
+<div class="container-fluid">
+  <div class="row p-3">
 
-    <div class="row col-9">     
+    <div class="row col-9">
       <% @geeks.each do |geek| %>
       <div class="col">
         <div class="card-trip">
@@ -25,7 +25,6 @@
       <div
   id="map"
   style="height: 90vh;"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEYpk.eyJ1IjoiYWxpc2F0bHYiLCJhIjoiY2swZGo0ZXQwMDFxajNobDk2aXJqZmgwOCJ9.xdZOh8D4sUey-EFTIT3JQA'] %>"
 ></div>
-    </div>
-</div>   
