@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-
+    @bookings = Booking.where(user: current_user)
+    @jobs = Booking.where(geek: current_user)
   end
 end
