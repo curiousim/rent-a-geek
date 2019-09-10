@@ -19,7 +19,8 @@ class GeeksController < ApplicationController
     @markers = @geeks.map do |geek|
       {
         lat: geek.latitude,
-        lng: geek.longitude
+        lng: geek.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { geek: geek })
       }
     end
   end
