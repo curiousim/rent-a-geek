@@ -1,31 +1,37 @@
-<div class="container-fluid">   
-  <div class="row p-3"> 
-
-    <div class="row col-9">     
+<div class="d-flex">
+  <div class="container">
+    <div class="row mt-4">
       <% @geeks.each do |geek| %>
-      <div class="col">
+      <div class="col-md-4">
+      <%= link_to geek_path(geek), class: "card-link" do  %>
         <div class="card-trip">
-        <% if geek.photo.url %>
+          <% if geek.photo.url %>
           <%= cl_image_tag geek.photo, height: 300, crop: :fill %>
-        <% else %>
+          <% else %>
           <%= image_tag 'https://www.anitian.com/wp-content/uploads/2016/11/silicon-valley-gilfoyle.jpg', class: "thumb-index"%>
-        <% end %>
+          <% end %>
           <div class="card-trip-infos">
-            <div>
-              <h2> <%= link_to geek.name, geek_path(geek) %> </h2>
-              <p><%= geek.description %></p>
-            </div>
+
+            <h2> <%= geek.name %> </h2>
+
+
             <h2 class="card-trip-pricing">$<%= geek.price %></h2>
           </div>
         </div>
+      <% end %>
       </div>
       <% end %>
-  </div>
-    <div class="col-3">
-      <div
-  id="map"
-  style="height: 90vh;"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
     </div>
-</div>   
+
+  </div>
+
+
+  <div
+  id="map"
+  style="height: 90vh; width: 500px"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+
+</div>
+
+</div>
+
