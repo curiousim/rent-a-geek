@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 2019_09_10_085614) do
     t.integer "time"
     t.string "address"
     t.integer "duration"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.text "content"
     t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["geek_id"], name: "index_bookings_on_geek_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
