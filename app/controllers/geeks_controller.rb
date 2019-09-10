@@ -74,4 +74,8 @@ class GeeksController < ApplicationController
   def find_geek
     @geek = Geek.find(params[:id])
   end
+
+  def find_reviews
+    @reviews = Booking.where()
+  end
 end
