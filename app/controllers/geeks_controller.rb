@@ -55,6 +55,12 @@ class GeeksController < ApplicationController
 
   def show
     @booking = Booking.new
+    @markers = [{
+        lat: @geek.latitude,
+        lng: @geek.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { geek: @geek }),
+        image_url: helpers.asset_url('logo.png')
+      }]
     #authorize @booking
     authorize @geek
   end
