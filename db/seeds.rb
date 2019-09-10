@@ -31,11 +31,14 @@ puts "Adding users..."
 end
 
 puts "Adding geeks.."
-10.times do
+categories = ["Sound Systems", "Security Systems", "VPN genius", "Linux specialist", "Math tutor", "Mathemagician","Physics tutor", "Biology tutoring", "Chemistry", "Geometry Brain"]
+addresses = ["Ben Yehuda 32, Tel Aviv", "Rishon LeTsiyon", "Bnei Brak", "Ramat Gan", "Ashdod", "Sderot Ben Gurion, Haifa", "Hod HaSharon", "Ramat HaSharon", "Ramat Aviv", "Jabotinski St. 15, Givatayim"]
+10.times do |i|
+  category = categories[i]
   name = Faker::FunnyName.name
   description = Faker::Movies::HitchhikersGuideToTheGalaxy.quote
-  location = Faker::Address.full_address
-  price= Faker::Number.between(from: 5, to: 1000) 
+  location = addresses[i]
+  price= Faker::Number.between(from: 5, to: 1000)
 
-  Geek.create!(active: true, name: name, description: description, location: location, price: price, trusted: true, user: User.second, category: "Geek")
+  Geek.create!(active: true, category: category, name: name, description: description, location: location, price: price, trusted: true, user: User.second)
 end
