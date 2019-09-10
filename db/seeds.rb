@@ -39,6 +39,7 @@ addresses = ["Ben Yehuda 32, Tel Aviv", "Rishon LeTsiyon", "Bnei Brak", "Ramat G
   description = Faker::Movies::HitchhikersGuideToTheGalaxy.quote
   location = addresses[i]
   price= Faker::Number.between(from: 5, to: 1000)
+  remote_photo_url = 'https://picsum.photos/200'
 
   Geek.create!(active: true, category: category, name: name, description: description, location: location, price: price, trusted: true, user: User.second)
 end
