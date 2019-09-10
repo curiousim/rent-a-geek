@@ -21,10 +21,6 @@
           </div>
           <%= f.submit "Search", class: 'btn btn-block btn-danger' %>
           <% end %>
-          <%= form_tag(geeks_path, { method: :get, :class => 'form-inline '}) do %>
-          <%= text_field_tag(:search, params[:search]) %>
-          <%= submit_tag ("search"), class: 'btn btn-sm btn-light' %>
-          <% end %>
         </div>
       </div>
     </div>
