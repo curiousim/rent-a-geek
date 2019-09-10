@@ -28,15 +28,15 @@
        ></div>
     </div>
     <div id="geek_reviews" class="col-9 p-3"></div>
-    <div class="col-3" id="booking_form">
-      <%= simple_form_for [@geek, @booking] do |f| %>
+    <div class="col-12" id="booking_form">
+      <%= simple_form_for [@geek, @booking], wrapper: :inline_form, html: { class: 'form-inline form-row' }  do |f| %>
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-      <%= f.input :date, input_html: { class: 'datepicker' } %>
-      <%= f.input :time, as: :time %>
-      <%= f.input :address, hint: 'Where do you want us to send you the geek?' %>
-      <%= f.input :duration, input_html: { min: '0', max: '8', step: '1' }, hint: 'For how long do you want to rent a geek? (In hours)' %>
-      <%= f.button :submit, "Book-A-Geek!", class: "btn btn-primary" %>
+      <%= f.input :date, input_html: { class: 'datepicker mr-4' }, placeholder: 'Choose date' %>
+      <%= f.input :time, as: :time, input_html: { class: 'mr-4' } %>
+      <%= f.input :address, placeholder: 'Your address', input_html: { class: 'mr-4', style: 'width: 25vw' } %>
+      <%= f.input :duration, input_html: { min: '0', max: '8', step: '1', class: 'mr-4', style: 'width: 15vw'}, placeholder: 'How many hours?' %>
+      <%= f.button :submit, "Book-A-Geek!", class: "btn btn-primary col" %>
       <% end %>
     </div>
   </div>
