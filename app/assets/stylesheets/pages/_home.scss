@@ -9,6 +9,11 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 
 }
+#home-page {
+  background: $blue;
+  padding-bottom: 18vh;
+
+}
 
 .main {
   text-align: center;
@@ -19,9 +24,9 @@
   // src: local('Akzidenz Grotesk Black'), url('Akzidenz-grotesk-black.woff') format('woff');
 }
 
-body {
-  background: #4DAECD;
-}
+// body {
+//   background: white;
+// }
 
 .slogan {
   font-size: 20px;
