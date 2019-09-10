@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   before_action :set_geek, only: [ :create ]
 
   def create
-    @booking = booking.new(booking_params)
+    @booking = Booking.new(booking_params)
     @booking.geek = @geek
     @booking.user = current_user
     authorize @booking
@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking = booking.find(params[:id])
+    @booking = Booking.find(params[:id])
     authorize @booking
     id = @booking.geek_id
     @booking.destroy
@@ -24,7 +24,7 @@ class BookingsController < ApplicationController
   private
 
   def set_geek
-    @geek = geek.find(params[:geek_id])
+    @geek = Geek.find(params[:geek_id])
   end
 
   def booking_params
