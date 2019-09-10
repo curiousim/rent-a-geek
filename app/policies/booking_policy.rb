@@ -5,7 +5,14 @@ class BookingPolicy < ApplicationPolicy
     end
   end
 
+  def add_review?
+    true
+  end
+
   def create?
+    true
+  end
+  def update?
     true
   end
 end
