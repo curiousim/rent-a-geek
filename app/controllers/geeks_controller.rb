@@ -20,7 +20,8 @@ class GeeksController < ApplicationController
       {
         lat: geek.latitude,
         lng: geek.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { geek: geek })
+        infoWindow: render_to_string(partial: "info_window", locals: { geek: geek }),
+        image_url: helpers.asset_url('logo.png')
       }
     end
   end
