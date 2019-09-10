@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :set_geek, only: [ :create ]
+  before_action :set_geek, only: [ :create, :edit ]
+  before_action :set_booking, only: [ :edit, :update, :add_review ]
 
   def create
     @booking = Booking.new(booking_params)
@@ -7,10 +8,25 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     authorize @booking
     if @booking.save
-      redirect_to geek_path(@geek)
+      redirect_to geek_path(@geek, notice: 'Booking was successfully created.')
     else
       render "geeks/show"
+      # render "dashboard"
     end
+  end
+
+  def edit
+  end
+
+  def update
+    @booking.update(booking_params)
+    authorize @booking
+    @booking.save
+    redirect_to dashboard_path
+  end
+
+  def add_review
+    authorize @booking
   end
 
   def destroy
@@ -27,7 +43,11 @@ class BookingsController < ApplicationController
     @geek = Geek.find(params[:geek_id])
   end
 
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
+
   def booking_params
-    params.require(:booking).permit(:user_id, :date, :time, :address, :duration)
+    params.require(:booking).permit(:user_id, :date, :time, :address, :duration, :review_content, :rating)
   end
 end
