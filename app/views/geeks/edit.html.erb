@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4 offset-4">
+      <h1>Edit my Geek</h1>
+
+      <%= render 'form', geek: @geek %>
+
+      <hr>
+      <%= link_to geek_path(geek) do %>
+      Back to my Geek
+      <% end %>
+    </div>
+  </div>
+</div>
