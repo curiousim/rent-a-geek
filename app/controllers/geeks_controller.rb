@@ -4,14 +4,31 @@ class GeeksController < ApplicationController
   before_action :find_geek_reviews, only: [:show]
 
   def index
-    if params[:search].present?
-      sql_query = " \
-        geeks.name @@ :query \
-        OR geeks.description @@ :query \
-        OR geeks.location @@ :query \
-        OR geeks.category @@ :query \
+    sql_query = " \
+      geeks.name @@ :query \
+      OR geeks.description @@ :query \
+      OR geeks.location @@ :query \
+      OR geeks.category @@ :query \
       "
-      @geeks = policy_scope(Geek).where(sql_query, query: "%#{params[:search]}%").where.not(longitude: nil, latitude: nil)
+    if params[:search_nav].present? 
+      @geeks = policy_scope(Geek).where(sql_query, query: "%#{params[:search_nav]}%").where.not(longitude: nil, latitude: nil)
+
+    elsif params[:search].present?
+      if params[:search][:category] != 'All' && params[:search][:name] != ''
+        # Have category and name
+        @geeks = policy_scope(Geek).where(category: params[:search][:category]).where(sql_query, query: "%#{params[:search][:name]}%").where.not(longitude: nil, latitude: nil)
+      elsif params[:search][:name] != '' && params[:search][:category] == 'All'
+        # Don't have category but name not empty
+        @geeks = policy_scope(Geek).where(sql_query, query: "%#{params[:search][:name]}%").where.not(longitude: nil, latitude: nil)
+      elsif params[:search][:name] == '' && params[:search][:category] != 'All'
+        # Name is empty, but category isn't
+        @geeks = policy_scope(Geek).where(category: params[:search][:category]).where.not(longitude: nil, latitude: nil)
+      elsif
+        # Everything is empty
+        @geeks = policy_scope(Geek).where.not(longitude: nil, latitude: nil)
+      end   
+      
+
     else
       @geeks = policy_scope(Geek).where.not(longitude: nil, latitude: nil)
     end
