@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_geek, only: [ :create, :edit, :show ]
-  before_action :set_booking, only: [ :edit, :update, :add_review, :show ]
+  before_action :set_booking, only: [ :edit, :update, :add_review, :show, :destroy ]
 
   def create
     @booking = Booking.new(booking_params)
@@ -36,10 +36,11 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking = Booking.find(params[:id])
+    # @booking = Booking.find(params[:id])
     authorize @booking
     id = @booking.geek_id
     @booking.destroy
+    # render "show"
     redirect_to geek_path(id)
   end
 

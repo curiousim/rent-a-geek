@@ -2,7 +2,7 @@
 <%= simple_form_for [@booking], wrapper: :inline_form, html: { class: 'form-inline form-row' }  do |f| %>
 <%= f.error_notification %>
 <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-<%= f.input :review_content, placeholder: 'Your review', input_html: { class: 'mr-4', style: 'width: 25vw' } %>
+<%= f.input :review_content, placeholder: 'Your review', input_html: { class: 'mr-4', style: 'width: 75vw' } %>
 <%= f.input :rating %>
 <%= f.button :submit, "Add review", class: "btn btn-primary col" %>
 <% end %>

@@ -18,7 +18,11 @@
         <ol>
           <% @bookings.each do |booking| %>
             <ul>
-              <li><%= booking.geek.name %> <span><%= link_to "Add review", add_review_path(booking.id) %></span></li>
+              <li><%= booking.geek.name %>
+                <% if !booking.rating  %>
+                <span><%= link_to "Add review", add_review_path(booking.id) %></span>
+                <% end  %>
+              </li>
             </ul>
           <% end %>
         </ol>
