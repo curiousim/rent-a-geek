@@ -1,6 +1,6 @@
 class GeeksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :find_geek, only: [:show]
+  before_action :find_geek_reviews, only: [:show]
 
   def index
 
@@ -71,7 +71,8 @@ class GeeksController < ApplicationController
     params.require(:geek).permit(:category, :name, :photo, :description, :location, :price, :active, :trusted)
   end
 
-  def find_geek
+  def find_geek_reviews
     @geek = Geek.find(params[:id])
+    @reviews = Booking.where(geek_id: params[:id]).select {|booking| booking.rating }
   end
 end

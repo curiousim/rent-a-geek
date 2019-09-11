@@ -4,9 +4,9 @@
     <div class="row col-9 justify-content-center">
       <div id="geek_image">
         <% if @geek.photo.url %>
-          <%= cl_image_tag @geek.photo, height: 300, crop: :fill, class: "rounded-circle" %>
+        <%= cl_image_tag @geek.photo, height: 300, crop: :fill, class: "rounded-circle" %>
         <% else %>
-          <%= image_tag 'https://www.anitian.com/wp-content/uploads/2016/11/silicon-valley-gilfoyle.jpg', class: "rounded-circle thumb-show"%>
+        <%= image_tag 'https://www.anitian.com/wp-content/uploads/2016/11/silicon-valley-gilfoyle.jpg', class: "rounded-circle thumb-show"%>
         <% end %>
         <h3 class=""> <%= @geek.name %> </h3>
       </div>
@@ -18,15 +18,35 @@
         <div class=col-9>Rating</div>
         <div class=col-3>TO DO</div>
       </div>
+
+      <div class="list-group">
+        <% @reviews.each do |review| %>
+          <li class="list-group-item">
+            <small>
+              <% count = 0 %>
+              <% 5.times do %>
+                <% if review.rating > count %>
+                  <i class="fas fa-star"></i>
+                <% else %>
+                  <i class="far fa-star"></i>
+                <% end %>
+                <% count += 1 %>
+              <% end %>
+            </small>
+            <p><%= review.review_content %></p>
+          </li>
+        <% end %>
+      </div>
+
     </div>
 
     <div class="col-3">
       <div
-       id="map"
-       style="height: 80vh;"
-       data-markers="<%= @markers.to_json %>"
-       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-       ></div>
+      id="map"
+      style="height: 80vh;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
     </div>
     <div id="geek_reviews" class="col-9 p-3"></div>
     <div class="col-12" id="booking_form">
@@ -43,5 +63,5 @@
   </div>
 
 
-  </div>
+</div>
 </div>
