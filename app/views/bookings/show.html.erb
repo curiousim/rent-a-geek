@@ -11,6 +11,6 @@
   <br>
   <br>
   <%= link_to "Close", geek_path(@geek), class: "btn btn-primary" %>
-  <%= link_to "Delete this booking", geek_path(@geek), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
+  <%= link_to "Delete this booking", booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
 
 </div>
