@@ -1,9 +1,8 @@
 class Booking < ApplicationRecord
-  HOURS = ['One hour', 'Two hours', 'Three hours', 'Four hours', 'Five hours', 'Six hours']
+  HOURS = [1, 2, 3, 4, 5, 6]
   belongs_to :user
   belongs_to :geek
   validates :date, presence: true
-  validates :time, presence: true
   validates :duration, presence: true, inclusion: { in: HOURS }
-  validates :location, presence: true
+  validates :address, presence: true
 end

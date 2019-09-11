@@ -58,7 +58,6 @@
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
       <%= f.input :date, input_html: { class: 'datepicker mr-4' }, placeholder: 'Choose date' %>
-      <%= f.input :time, as: :time, input_html: { class: 'mr-4' } %>
       <%= f.input :address, placeholder: 'Your address', input_html: { class: 'mr-4', style: 'width: 25vw' } %>
       <%= f.input :duration, input_html: { min: '0', max: '8', step: '1', class: 'mr-4', style: 'width: 15vw'}, placeholder: 'How many hours?' %>
       <%= f.button :submit, "Book-A-Geek!", class: "btn btn-primary col" %>
