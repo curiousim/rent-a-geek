@@ -1,6 +1,19 @@
 <div class="d-flex">
   <div class="container">
     <div class="main-img text-center">
+      <div class="avg-rating">
+        <small>
+          <% count = 0 %>
+          <% 5.times do %>
+          <% if @average > count %>
+          <i class="fas fa-star"></i>
+          <% else %>
+          <i class="far fa-star"></i>
+          <% end %>
+          <% count += 1 %>
+          <% end %>
+        </small>
+      </div>
       <div id="geek_image">
         <% if @geek.photo.url %>
         <%= cl_image_tag @geek.photo, height: 300, crop: :fill, class: "rounded-circle" %>

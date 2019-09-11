@@ -14,6 +14,19 @@
               <div class="card-trip-infos">
                 <h2> <%= geek.name %> </h2>
                 <h2 class="card-trip-pricing">$<%= geek.price %></h2>
+                <h2>
+                  <small>
+                    <% count = 0 %>
+                    <% 5.times do %>
+                    <% if !geek.bookings.empty? && geek.bookings.average(:rating) > count %>
+                    <i class="fas fa-star"></i>
+                    <% else %>
+                    <i class="far fa-star"></i>
+                    <% end %>
+                    <% count += 1 %>
+                    <% end %>
+                  </small>
+                </h2>
               </div>
             </div>
           <% end %>

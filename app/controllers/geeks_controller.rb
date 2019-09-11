@@ -2,6 +2,7 @@ class GeeksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :find_geek, only: [:show, :edit, :update, :destroy]
   before_action :find_geek_reviews, only: [:show]
+  before_action :calc_avg_rating, only: [:show]
 
   def index
     sql_query = " \
@@ -10,7 +11,7 @@ class GeeksController < ApplicationController
       OR geeks.location @@ :query \
       OR geeks.category @@ :query \
       "
-    if params[:search_nav].present? 
+    if params[:search_nav].present?
       @geeks = policy_scope(Geek).where(sql_query, query: "%#{params[:search_nav]}%").where.not(longitude: nil, latitude: nil)
 
     elsif params[:search].present?
@@ -26,8 +27,8 @@ class GeeksController < ApplicationController
       elsif
         # Everything is empty
         @geeks = policy_scope(Geek).where.not(longitude: nil, latitude: nil)
-      end   
-      
+      end
+
 
     else
       @geeks = policy_scope(Geek).where.not(longitude: nil, latitude: nil)
@@ -41,6 +42,7 @@ class GeeksController < ApplicationController
         image_url: helpers.asset_url('logo.png')
       }
     end
+
   end
 
   def new
@@ -99,6 +101,13 @@ class GeeksController < ApplicationController
   end
 
   def find_geek_reviews
-    @reviews = Booking.where(geek_id: params[:id]).select {|booking| booking.rating }
+    # @reviews = Booking.where(geek_id: params[:id]).select {|booking| booking.rating }
+    @reviews = @geek.bookings.select {|booking| booking.rating }
+
+  end
+
+  def calc_avg_rating
+    # @average = Booking.where(geek_id: params[:id]).average(:rating)
+    @average = @geek.bookings.average(:rating)
   end
 end
