@@ -8,6 +8,7 @@ class BookingsController < ApplicationController
     @booking.geek = @geek
     @booking.user = current_user
     authorize @booking
+    raise
     if @booking.save!
       # redirect_to geek_path(@geek, notice: 'Booking was successfully created.')
       # redirect_to booking_path(@booking, notice: 'Please approve your booking.')
