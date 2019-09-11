@@ -1,16 +1,16 @@
 <div class="container">
-  <h1>Your booking for geek <%= @geek.name  %> data</h1>
-  <br>
-  <br>
-  <h3><%= @booking.date %></h3>
-  <h3><%= @booking.time %></h3>
+<% #raise %>
+  <div class="row justify-content-md-center">
+  <h1 class="col-12 text-center">Your booking is with </h1>
+  <h1 class="col-12 text-center"><%= cl_image_tag @geek.photo, crop: :fill, class: "avatar-large" %> <%= link_to @geek.name, geek_path(@geek) %> </h1>
+  <h3 class="col-12 text-center">Your geek will arrive on</h3>
+  <h3 class="col-12 text-center" style="text-decoration: underline;"><%= @booking.date.strftime("%m/%d/%Y at %H:%M")  %></h3>
+  <h3 class="col-12 text-center">at</h3>
   <h3><%= @booking.address %></h3>
-  <h3><%= @booking.duration %></h3>
-  <h3><%= @booking.completed %></h3>
-  <br>
-  <br>
-  <br>
-  <%= link_to "Close", geek_path(@geek), class: "btn btn-primary" %>
-  <%= link_to "Delete this booking", booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
-
+  <h3 class="col-12 text-center" >And will stay with you for:</h3>
+  <h4 style="text-decoration: underline;"><%= @booking.duration %> hours</h4>
+  <h3 class="col-12 text-center">Your total price is</h3>
+  <h4>&#8362;<%= @geek.price * @booking.duration %></h4>
+  <%= link_to "Delete this booking", booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-lg btn-primary col-12" %>
+  </div>
 </div>

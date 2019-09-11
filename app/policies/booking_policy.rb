@@ -5,11 +5,15 @@ class BookingPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    true
+  end
+
   def add_review?
     true
   end
 
-  def destroy
+  def destroy?
     true
   end
 
