@@ -7,5 +7,7 @@ class PagesController < ApplicationController
   def dashboard
     @bookings = Booking.where(user: current_user)
     @jobs = Booking.where(geek: current_user)
+    # @geek = Geek.find(params[:id])
+    # authorize @geek
   end
 end
