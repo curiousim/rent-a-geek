@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Your booking for geek <%= @geek.name  %> data</h1>
+  <br>
+  <br>
+  <h3><%= @booking.date %></h3>
+  <h3><%= @booking.time %></h3>
+  <h3><%= @booking.address %></h3>
+  <h3><%= @booking.duration %></h3>
+  <h3><%= @booking.completed %></h3>
+  <br>
+  <br>
+  <br>
+  <%= link_to "Close", geek_path(@geek), class: "btn btn-primary" %>
+  <%= link_to "Delete this booking", geek_path(@geek), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
+
+</div>
