@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_geek, only: [ :create, :edit ]
-  before_action :set_booking, only: [ :edit, :update, :add_review ]
+  before_action :set_booking, only: [ :edit, :update, :add_review, :show ]
 
   def create
     @booking = Booking.new(booking_params)
@@ -13,6 +13,10 @@ class BookingsController < ApplicationController
       render "geeks/show"
       # render "dashboard"
     end
+  end
+
+  def show
+    authorize @booking
   end
 
   def edit
