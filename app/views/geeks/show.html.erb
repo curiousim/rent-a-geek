@@ -9,6 +9,10 @@
         <%= image_tag 'https://www.anitian.com/wp-content/uploads/2016/11/silicon-valley-gilfoyle.jpg', class: "rounded-circle thumb-show"%>
         <% end %>
         <h3 class=""> <%= @geek.name %> </h3>
+        <% if @geek.user == current_user %>
+          <%= link_to "✎", edit_geek_path %>
+          <%= button_to "🗑",  geek_path(@geek), method: 'delete', data: { confirm: "Do you want to delete this geek ?"} %>
+        <% end %>
       </div>
       <div id="geek_info" class="row">
         <div class=col-9>Category</div>
