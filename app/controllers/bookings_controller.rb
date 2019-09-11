@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [ :edit, :update, :add_review, :show, :destroy ]
 
   def create
-    binding.pry
+    # binding.pry
     @booking = Booking.new(booking_params)
     @booking.geek = @geek
     @booking.user = current_user
