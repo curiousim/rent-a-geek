@@ -18,6 +18,18 @@
         <div class=col-9>Rating</div>
         <div class=col-3>TO DO</div>
       </div>
+      <div class="row">
+        <div class="col-12">
+          <h4>Reviews</h4>
+          <ol>
+            <% @reviews.each do |review| %>
+              <ul>
+                <li><%= review.review_content %> <span><%= review.rating %></span></li>
+              </ul>
+            <% end %>
+          </ol>
+        </div>
+      </div>
     </div>
 
     <div class="col-3">
