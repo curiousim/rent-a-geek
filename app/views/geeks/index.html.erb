@@ -18,7 +18,7 @@
                   <small>
                     <% count = 0 %>
                     <% 5.times do %>
-                    <% if !geek.bookings.empty? && geek.bookings.average(:rating) > count %>
+                    <% if !geek.bookings.average(:rating).nil? && geek.bookings.average(:rating) > count %>
                     <i class="fas fa-star"></i>
                     <% else %>
                     <i class="far fa-star"></i>
