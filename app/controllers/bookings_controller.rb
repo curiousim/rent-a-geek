@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_geek, only: [ :create, :edit ]
+  before_action :set_geek, only: [ :create, :edit, :show ]
   before_action :set_booking, only: [ :edit, :update, :add_review, :show ]
 
   def create
@@ -7,8 +7,10 @@ class BookingsController < ApplicationController
     @booking.geek = @geek
     @booking.user = current_user
     authorize @booking
-    if @booking.save
-      redirect_to geek_path(@geek, notice: 'Booking was successfully created.')
+    if @booking.save!
+      # redirect_to geek_path(@geek, notice: 'Booking was successfully created.')
+      # redirect_to booking_path(@booking, notice: 'Please approve your booking.')
+      render "show"
     else
       render "geeks/show"
       # render "dashboard"
