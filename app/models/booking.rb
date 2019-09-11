@@ -6,5 +6,4 @@ class Booking < ApplicationRecord
   validates :time, presence: true
   validates :duration, presence: true, inclusion: { in: HOURS }
   validates :location, presence: true
-  validates :completed
 end
