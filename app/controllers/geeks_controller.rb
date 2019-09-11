@@ -1,9 +1,9 @@
 class GeeksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :find_geek, only: [:show, :edit, :update, :destroy]
   before_action :find_geek_reviews, only: [:show]
 
   def index
-
     if params[:search].present?
       sql_query = " \
         geeks.name @@ :query \
@@ -43,10 +43,12 @@ class GeeksController < ApplicationController
   end
 
   def edit
+    authorize @geek
   end
 
   def update
     if @geek.update(geek_params)
+      authorize @geek
       redirect_to geek_path(@geek, notice: 'Geek was successfully updated.')
     else
       render :edit
@@ -61,8 +63,12 @@ class GeeksController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { geek: @geek }),
         image_url: helpers.asset_url('logo.png')
       }]
-    #authorize @booking
     authorize @geek
+  end
+
+  def destroy
+    authorize @geek
+    redirect_to geeks_path if @geek.destroy!
   end
 
   private
@@ -71,8 +77,11 @@ class GeeksController < ApplicationController
     params.require(:geek).permit(:category, :name, :photo, :description, :location, :price, :active, :trusted)
   end
 
-  def find_geek_reviews
+  def find_geek
     @geek = Geek.find(params[:id])
+  end
+
+  def find_geek_reviews
     @reviews = Booking.where(geek_id: params[:id]).select {|booking| booking.rating }
   end
 end

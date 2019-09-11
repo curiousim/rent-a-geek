@@ -6,9 +6,7 @@
       <%= render 'form', geek: @geek %>
 
       <hr>
-      <%= link_to geek_path(geek) do %>
-      Back to my Geek
-      <% end %>
+      <%= link_to "Back to my Geek", geek_path(@geek) %>
     </div>
   </div>
 </div>
