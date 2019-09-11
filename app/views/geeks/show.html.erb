@@ -22,6 +22,27 @@
         <div class=col-3>TO DO</div>
       </div>
 
+    </div>
+</div>
+    <div
+      id="map"
+      style="height: 100vh; width: 500px;"
+      data-markers="<%= @markers.to_json %>"
+
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
+    </div>
+    <div class="col-12" id="booking_form">
+      <%= simple_form_for [@geek, @booking], wrapper: :inline_form, html: { class: 'form-inline form-row' }  do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+      <%= f.input :date, as: :string, input_html: { class: 'datepicker mr-4' }, placeholder: 'Choose date' %>
+      <%= f.input :address, placeholder: 'Your address', input_html: { class: 'mr-4', style: 'width: 25vw' } %>
+      <%= f.input :duration, input_html: { min: '0', max: '8', step: '1', class: 'mr-4', style: 'width: 15vw'}, placeholder: 'How many hours?' %>
+      <%= f.button :submit, "Book-A-Geek!", class: "btn btn-primary col" %>
+      <% end %>
+    </div>
+    <div id="geek_reviews" class="col-9 p-3"></div>
       <div class="list-group">
         <% @reviews.each do |review| %>
         <li class="list-group-item">
@@ -40,40 +61,6 @@
         </li>
         <% end %>
       </div>
-
-      <div id="geek_reviews" class="col-9 p-3"></div>
-      <div class="border border-danger col-9" id="booking_form">
-        <%= simple_form_for [@geek, @booking], wrapper: :inline_form, html: { class: 'form-inline form-row' }  do |f| %>
-        <%= f.error_notification %>
-        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-        <%= f.input :date, input_html: { class: 'datepicker mr-4' }, placeholder: 'Choose date' %>
-        <%= f.input :time, as: :time, input_html: { class: 'mr-4' } %>
-        <%= f.input :address, placeholder: 'Your address', input_html: { class: 'mr-4', style: 'width: 25vw' } %>
-        <%= f.input :duration, input_html: { min: '0', max: '8', step: '1', class: 'mr-4', style: 'width: 15vw'}, placeholder: 'How many hours?' %>
-        <%= f.button :submit, "Book-A-Geek!", class: "btn btn-primary col" %>
-        <% end %>
-      </div>
-    </div>
-</div>
-    <div
-      id="map"
-      style="height: 100vh; width: 500px;"
-      data-markers="<%= @markers.to_json %>"
-
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-      ></div>
-    </div>
-    <div id="geek_reviews" class="col-9 p-3"></div>
-    <div class="col-12" id="booking_form">
-      <%= simple_form_for [@geek, @booking], wrapper: :inline_form, html: { class: 'form-inline form-row' }  do |f| %>
-      <%= f.error_notification %>
-      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-      <%= f.input :date, as: :string, input_html: { class: 'datepicker mr-4' }, placeholder: 'Choose date' %>
-      <%= f.input :address, placeholder: 'Your address', input_html: { class: 'mr-4', style: 'width: 25vw' } %>
-      <%= f.input :duration, input_html: { min: '0', max: '8', step: '1', class: 'mr-4', style: 'width: 15vw'}, placeholder: 'How many hours?' %>
-      <%= f.button :submit, "Book-A-Geek!", class: "btn btn-primary col" %>
-      <% end %>
-    </div>
   </div>
 
   </div>
