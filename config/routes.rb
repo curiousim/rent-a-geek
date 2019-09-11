@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:show, :update, :destroy]
   resources :geeks do
-    resources :bookings, only: [:create]
+    resources :bookings, only: [:create, :show]
   end
 end
