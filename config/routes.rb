@@ -4,8 +4,7 @@ Rails.application.routes.draw do
   get "dashboard", to: "pages#dashboard"
   get "add_review/:id", to: "bookings#add_review", as: :add_review
 
-  resources :bookings, only: [:show, :update]
+  resources :bookings, only: [:show, :update, :destroy]
   resources :geeks do
     resources :bookings, only: [:create]
   end
-end
