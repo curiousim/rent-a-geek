@@ -1,29 +1,33 @@
 
-<div class="container">
+<div class="container border border-warning">
   <h2>Dashboard for my geeks</h2>
   <!-- if the user is a geek and a client it shows both, if the geek is just a geek it show my jobs, and if a geek is a customer it shows my bookings -->
   <!-- add reviews -->
-  <div class="flex">
-    <div class="row">
-      <div class="col-8">
+  <div class="flex border border-info">
+    <div class="row border border-danger">
+      <div class="col-8 border border-success">
         <h3>My Jobs</h3>
-          <% @jobs.each do |job| %>
-            <ul>
-              <li><%= job.user.first_name + ' ' + job.user.last_name %></li>
-            </ul>
-          <% end %>
+        <% if @jobs.present? %>
+        <% @jobs.each do |job| %>
+        <ul>
+          <li><%= job.user.first_name + ' ' + job.user.last_name %></li>
+        </ul>
+        <% end %>
+        <% else %>
+          <h5>(You don't have any jobs at the moment)</h5>
+        <% end %>
       </div>
       <div class="col-8">
         <h3>My bookings</h3>
         <ol>
           <% @bookings.each do |booking| %>
-            <ul>
-              <li><%= booking.geek.name %> <span><%= link_to "Add review", add_review_path(booking.id) %></span></li>
-            </ul>
+          <ul>
+            <li><%= booking.geek.name %> <span><%= link_to "Add review", add_review_path(booking.id) %></span></li>
+          </ul>
           <% end %>
         </ol>
       </div>
     </div>
   </div>
-  <%= link_to "Be a Geek", new_geek_path %>
+<h3><%= link_to "Be a Geek 🤓", new_geek_path %></h3>
 </div>
