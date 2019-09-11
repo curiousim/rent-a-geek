@@ -31,13 +31,16 @@ puts "Adding users..."
 end
 
 puts "Adding geeks.."
-categories = ["Sound Systems", "Security Systems", "VPN genius", "Linux specialist", "Math tutor", "Mathemagician","Physics tutor", "Biology tutoring", "Chemistry", "Geometry Brain"]
+
+categories = ['Coding', 'Cuddles', 'Star Wars', 'Linux Administration', 'Windows administration', 'Hardware', 'Mobile phones', 'Comics', 'GoT whining', 'Heroku', 'RoR', 'General Geekery', 'Beardnecks', 'Manga', 'Cyber security', 'DevOps', "Sound Systems", "Security Systems", "VPN genius", "Math tutor", "Mathemagician","Physics tutor", "Biology tutoring", "Chemistry", "Geometry Brain"]
+
 addresses = ["Ben Yehuda 32, Tel Aviv", "Rishon LeTsiyon", "Bnei Brak", "Ramat Gan", "Ashdod", "Sderot Ben Gurion, Haifa", "Hod HaSharon", "Ramat HaSharon", "Ramat Aviv", "Jabotinski St. 15, Givatayim"]
+
 10.times do |i|
-  category = categories[i]
+  category = categories.sample
   name = Faker::FunnyName.name
   description = Faker::Movies::HitchhikersGuideToTheGalaxy.quote
-  location = addresses[i]
+  location = addresses.sample
   price= Faker::Number.between(from: 5, to: 1000)
   remote_photo_url = 'https://picsum.photos/200'
 
