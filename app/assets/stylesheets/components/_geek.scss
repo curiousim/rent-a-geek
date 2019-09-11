@@ -1,12 +1,11 @@
 .card-link {
   text-decoration: none;
 }
-
 .card-trip {
   margin-bottom: 18px;
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.2);
   padding: 22px;
 }
 .card-trip > img {
@@ -14,7 +13,6 @@
   width: 100%;
   object-fit: cover;
 }
-
 .card-trip h2 {
   font-size: 16px;
   font-weight: bold;
@@ -49,3 +47,27 @@
     padding-top: 24px;
     padding-right: 30px;
 }
+.main-img {
+  padding-top: 20px;
+}
+.main-name{
+
+  padding-top: 20px;
+  font-size: 25px;
+  font-family: Helvetica;
+
+}
+.description {
+  padding-top: 20px;
+}
+#geek_info {
+  padding-top: 20px;
+  font-size: bold;
+}
+#category {
+  font-weight: bold;
+}
+.booking_form {
+
+}
+
