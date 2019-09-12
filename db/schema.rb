@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2019_09_12_090750) do
     t.datetime "updated_at", null: false
     t.boolean "completed", default: false
     t.integer "rating"
-    t.datetime "date", default: "2019-09-12 09:13:17"
+    t.datetime "date", default: "2019-09-12 09:29:06"
     t.index ["geek_id"], name: "index_bookings_on_geek_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
