@@ -3,6 +3,12 @@
   <h2>Hello, <%= current_user.first_name %></h2>
   <!-- if the user is a geek and a client it shows both, if the geek is just a geek it show my jobs, and if a geek is a customer it shows my bookings -->
   <!-- add reviews -->
+        <% if current_user.avatar.file %>
+        <%= cl_image_tag current_user.avatar, height: 250, crop: :fill, class: "rounded-circle" %>
+        <% else %>
+        <%= image_tag 'https://www.anitian.com/wp-content/uploads/2016/11/silicon-valley-gilfoyle.jpg', class: "rounded-circle thumb-show"%>
+        <% end %>
+        <h3>My Jobs</h3>
   <div class="my-5">
       <div class="col mb-3">
         <h3 class="mb-3">Your jobs as a geek:</h3>
