@@ -32,16 +32,16 @@
 
         <div class="description col-12 text-left px-0 px-3"><h6>Why?</h6></div>
         <div class="col-12"><p><%= @geek.description %></p></div>
-
-
-        <%= simple_form_for [@geek, @booking], wrapper: :inline_form, html: { class: 'form-inline form-row p-1' }  do |f| %>
+        <div class="col-12" id="booking_form">
+        </div>
+      <%= simple_form_for [@geek, @booking], wrapper: :inline_form, html: { class: 'form-inline form-row p-1' }  do |f| %>
         <%= f.error_notification %>
         <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
         <%= f.input :date, as: :string, input_html: { class: 'datepicker mr-2 ' }, placeholder: 'Choose date' %>
         <%= f.input :address, placeholder: 'Your address', input_html: { class: 'mr-2', style: 'width: 18vw' } %>
         <%= f.input :duration, input_html: { min: '0', max: '8', step: '1', class: 'mr-2', style: 'width: 10vw'}, placeholder: 'No. of hours' %>
         <%= f.button :submit, "Book-A-Geek!", class: "btn btn-primary" %>
-        <% end %>
+      <% end %>
       </div>
 
       <div class="list-group text-left  mt-0 pt-0 px-5">
