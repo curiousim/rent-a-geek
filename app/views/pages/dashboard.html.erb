@@ -1,6 +1,6 @@
 
-<div class="container mt-5 p-5 shadow">
-  <h2>Dashboard</h2>
+<div class="container mt-5 pt-5 pl-5 pr-5 shadow">
+  <h2>Hello, <%= current_user.first_name %></h2>
   <!-- if the user is a geek and a client it shows both, if the geek is just a geek it show my jobs, and if a geek is a customer it shows my bookings -->
   <!-- add reviews -->
         <% if current_user.avatar.file %>
@@ -8,46 +8,45 @@
         <% else %>
         <%= image_tag 'https://www.anitian.com/wp-content/uploads/2016/11/silicon-valley-gilfoyle.jpg', class: "rounded-circle thumb-show"%>
         <% end %>
-
-  <div class="my-5 p-3 ">
-      <div class="col-8 mb-3">
-
-        </ul>
         <h3>My Jobs</h3>
+  <div class="my-5">
+      <div class="col mb-3">
+        <h3 class="mb-3">Your jobs as a geek:</h3>
         <% #raise %>
         <% if @jobs.present? %>
         <% @jobs.each do |job| %>
-        <ul>
-          <li><%= "#{job.user.email}: #{job.date.strftime("%Y-%m-%d %H:%M")} @ #{job.address}" %></li>
-        </ul>
+          <div>
+          <h5>Job for <%= "#{job.user.first_name} #{job.user.last_name}" %></h5>
+          <p class="mb-0">Date: <%= job.date.strftime("%Y-%m-%d %H:%M") %></p>
+          <p class="mt-0">Address: <%= job.address %></p>
         <% end %>
         <% elsif current_user.geeks.empty? %>
           <h5>(Bring out your inner Geek!)</h5>
-          <h6><%= link_to "Become a Geek 🤓", new_geek_path %></h6>
         <% else %>
           (You don't have any jobs at the moment)
         <% end %>
       </div>
-      <div class="col-8 border-top pt-5">
-        <h3>My Bookings</h3>
-        <% if @bookings.present? %>
-          <% @bookings.each do |booking| %>
-            <ul>
-              <li><%= "#{booking.geek.name}: #{booking.date.strftime("%Y-%m-%d %H:%M")} #{booking.address}" %>
-                <% if Date.current < booking.date %>
-                <span><%= link_to "Delete booking", booking_path(booking), method: :delete, data: { confirm: "Are you sure?" } %></span>
-                <% end  %>
-              </li>
+
+      <div class="col border-top pt-5 pb-5">
+      <h3>Your bookings</h3>
+      <% if @bookings.present? %>
+        <% @bookings.each do |booking| %>
+          <div>
+              <%= "#{booking.geek.name}: #{booking.date.strftime("%Y-%m-%d %H:%M")} #{booking.address}" %>
+              <% if Date.current < booking.date %>
+                <%= link_to 'Delete <i class="fas fa-trash-alt"></i>'.html_safe, 
+                booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }, 
+                class: "float-right"  %>
+              <% end  %>
                 <% if !booking.rating  %>
-                <span><%= link_to "Add review", add_review_path(booking.id) %></span>
-                <% end  %>
-              </li>
-            </ul>
+                <%= link_to 'Add review <i class="fas fa-pencil-alt"></i>'.html_safe, add_review_path(booking.id), class: "float-right" %>
+              <% end  %>
+          </div>
           <% end %>
         <% else %>
         <h5>(You don't have any bookings at the moment)</h5>
         <% end %>
       </div>
   </div>
-<h3><%= link_to "Be a Geek 🤓", new_geek_path %></h3>
+<h3 class="text-center border-top pt-4 pb-3"><%= link_to "Be a Geek 🤓", new_geek_path %></h3>
 </div>
