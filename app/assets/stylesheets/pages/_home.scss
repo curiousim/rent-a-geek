@@ -1,18 +1,16 @@
 // Specific CSS for your home-page
-.padding-home {
-  padding-top: 100px;
-}
+// .padding-home {
+// }
 .search-form {
   background-color: white;
   padding: 65px;
   border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 #home-page {
   background: $blue;
+  padding-top: 50px;
   padding-bottom: 18vh;
-
 }
 
 .main {
@@ -32,6 +30,4 @@
   font-size: 20px;
   font-family: 'Roboto', sans-serif;
   // font-family: 'Akzidenz Grotesk Black';
-
 }
-
