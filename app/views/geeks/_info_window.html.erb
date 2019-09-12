@@ -1,3 +1,14 @@
-
-<h6><%= geek.name %></h6>
-<p><%= geek.category %></p>
+<div style="text-align: center;">
+  <h6> <%= link_to geek.name, geek_path(geek) %></h6>
+  <%= cl_image_tag geek.photo, crop: :fill, class: "avatar-large" %>
+  <p><%= geek.category %></p>
+    <% count = 0 %>
+    <% 5.times do %>
+      <% if !geek.bookings.average(:rating).nil? && geek.bookings.average(:rating) > count %>
+        <i class="fas fa-star"></>
+      <% else %>
+        <i class="far fa-star"></i>
+      <% end %>
+      <% count += 1 %>
+    <% end %>
+</div>
