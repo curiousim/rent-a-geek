@@ -5,12 +5,14 @@
   <!-- add reviews -->
   <div class="my-5 p-3 ">
       <div class="col-8 mb-3">
+
+        </ul>
         <h3>My Jobs</h3>
         <% #raise %>
         <% if @jobs.present? %>
         <% @jobs.each do |job| %>
         <ul>
-          <li><%= job.user.first_name + ' ' + job.user.last_name %></li>
+          <li><%= "#{job.user.email}: #{job.date.strftime("%Y-%m-%d %H:%M")} @ #{job.address}" %></li>
         </ul>
         <% end %>
         <% elsif current_user.geeks.empty? %>
@@ -23,7 +25,6 @@
       <div class="col-8 border-top pt-5">
         <h3>My Bookings</h3>
         <% if @bookings.present? %>
-        <ol>
           <% @bookings.each do |booking| %>
             <ul>
               <li><%= "#{booking.geek.name}: #{booking.date.strftime("%Y-%m-%d %H:%M")} #{booking.address}" %>
@@ -37,7 +38,6 @@
               </li>
             </ul>
           <% end %>
-        </ol>
         <% else %>
         <h5>(You don't have any bookings at the moment)</h5>
         <% end %>
