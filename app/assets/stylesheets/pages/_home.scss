@@ -1,6 +1,7 @@
 // Specific CSS for your home-page
 .padding-home {
-  padding-top: 100px;
+  // padding-top: 100px;
+
 }
 .search-form {
   background-color: white;
@@ -11,7 +12,9 @@
 }
 #home-page {
   background: $blue;
-  padding-bottom: 18vh;
+  padding-bottom: 15vh;
+
+  min-height: 1000px;
 
 }
 
