@@ -7,6 +7,7 @@
         <% else %>
         <%= image_tag 'https://www.anitian.com/wp-content/uploads/2016/11/silicon-valley-gilfoyle.jpg', class: "rounded-circle thumb-show"%>
         <% end %>
+        </div>
         <h3 class="main-name"> <%= @geek.name %> </h3>
         <div class="avg-rating">
         <% if !@booking.id.nil? && (@geek.user == current_user) %>
@@ -69,8 +70,3 @@
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
   </div>
-
-
-</div>
-
-</div>
