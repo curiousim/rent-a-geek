@@ -109,6 +109,6 @@ class GeeksController < ApplicationController
   def calc_avg_rating
     # @average = Booking.where(geek_id: params[:id]).average(:rating)
     @average = @geek.bookings.average(:rating)
-    @average = 0 if @geek.bookings.empty?
+    @average = 0 if @geek.bookings.empty? || @average.nil?
   end
 end
