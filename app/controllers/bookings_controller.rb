@@ -3,19 +3,14 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [ :edit, :update, :add_review, :show, :destroy ]
 
   def create
-    # binding.pry
     @booking = Booking.new(booking_params)
     @booking.geek = @geek
     @booking.user = current_user
     authorize @booking
-    # raise
     if @booking.save!
-      # redirect_to geek_path(@geek, notice: 'Booking was successfully created.')
-      # redirect_to booking_path(@booking, notice: 'Please approve your booking.')
       render "show"
     else
       render "geeks/show"
-      # render "dashboard"
     end
   end
 
@@ -38,12 +33,10 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    # @booking = Booking.find(params[:id])
     authorize @booking
     id = @booking.geek_id
     @booking.destroy
-    # render "show"
-    redirect_to geek_path(id)
+    redirect_to dashboard_path
   end
 
   private
